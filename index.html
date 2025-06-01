@@ -155,6 +155,29 @@
       border-radius: 50%;
       transform: scale(1.2);
     }
+    .hidden {
+  display: none;
+}
+
+#loadMore {
+  display: block;
+  margin: 1.5rem auto;
+  padding: 0.75rem 1.5rem;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#loadMore:hover {
+  background-color: #ffcc00;
+  color: #3f51b5;
+}
+
   </style>
 </head>
 <body>
@@ -173,6 +196,27 @@
       <a href="#subscribe">Contact</a>
     </nav>
   </header>
+  <script>
+  const loadMoreBtn = document.getElementById("loadMore");
+  const hiddenPosts = document.querySelectorAll(".post-card.hidden");
+  let currentIndex = 0;
+  const postsPerClick = 2;
+
+  loadMoreBtn.addEventListener("click", () => {
+    for (let i = 0; i < postsPerClick; i++) {
+      if (currentIndex < hiddenPosts.length) {
+        hiddenPosts[currentIndex].classList.remove("hidden");
+        currentIndex++;
+      }
+    }
+
+    // Hide button if no more posts
+    if (currentIndex >= hiddenPosts.length) {
+      loadMoreBtn.style.display = "none";
+    }
+  });
+</script>
+
  <!-- Social icons left side -->
   <div class="social-icons" aria-label="Social Media Links">
     <a href="https://www.linkedin.com/in/meseret-akalu-49752b116/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
@@ -287,6 +331,44 @@
       <div><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/meseretak/">Facebook</a></div>
     </div>
   </section>
+  <section id="posts">
+  <h2>Latest Posts</h2>
+  <div class="post-list">
+    <div class="post-card"> <!-- 1 -->
+      <h3>🔥 The Rise of QA Automation in Ethiopia</h3>
+      <p>Exploring how modern QA tools are transforming banking and fintech in East Africa...</p>
+      <a href="qa-automation-ethiopia.html" class="see-more">See More</a>
+    </div>
+    <div class="post-card"> <!-- 2 -->
+      <h3>💡 DevOps Culture Shift at Awash Bank</h3>
+      <p>A look into how DevOps principles are enhancing deployment cycles and reducing downtime...</p>
+      <a href="devops-awash.html" class="see-more">See More</a>
+    </div>
+    <div class="post-card"> <!-- 3 -->
+      <h3>📈 Metrics That Matter: QA KPIs</h3>
+      <p>Learn how to track quality through metrics like test coverage, defect leakage, and cycle time...</p>
+      <a href="qa-metrics.html" class="see-more">See More</a>
+    </div>
+    <div class="post-card hidden"> <!-- 4 -->
+      <h3>🔐 Secure Coding Tips for QA Review</h3>
+      <p>Security isn't just Dev’s job. How QA testers can catch vulnerabilities early...</p>
+      <a href="secure-coding.html" class="see-more">See More</a>
+    </div>
+    <div class="post-card hidden"> <!-- 5 -->
+      <h3>📊 Performance Testing Like a Pro</h3>
+      <p>Tools and strategies to break your app before the users do (in a good way)...</p>
+      <a href="performance-pro.html" class="see-more">See More</a>
+    </div>
+    <div class="post-card hidden"> <!-- 6 -->
+      <h3>🧪 Manual vs Automation: A Peace Treaty</h3>
+      <p>Let’s stop the war. Here's how both sides win in a balanced QA strategy...</p>
+      <a href="manual-vs-automation.html" class="see-more">See More</a>
+    </div>
+  </div>
+
+  <button id="loadMore">Load More</button>
+</section>
+
  <section id="cv" class="fade-in">
   <h2>My CV</h2>
   <p>You can view or download my full CV below:</p>
