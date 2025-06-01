@@ -15,11 +15,20 @@
     header {
       background-color: #3f51b5;
       color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
+      padding: 2rem 2rem 1rem;
+      text-align: center;
+    }
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      margin-top: -80px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    nav {
+      margin-top: 1rem;
     }
     nav a {
       color: white;
@@ -54,7 +63,9 @@
 </head>
 <body>
   <header>
+    <img src="profile.jpg" alt="Meseret Akalu" class="profile-img">
     <h1>Meseret Akalu</h1>
+    <p>Project Manager | QA Specialist | DevOps Evangelist</p>
     <nav>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
