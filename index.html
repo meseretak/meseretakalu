@@ -6,13 +6,13 @@
   <link rel="icon" href="favicon.png" type="image/png" />
   <title>Meseret Akalu | QA & DevOps Portfolio</title>
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LN7QEKJW7Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LN7QEKJW7Z');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LN7QEKJW7Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LN7QEKJW7Z');
+  </script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <style>
@@ -127,7 +127,7 @@
       margin-top: 2rem;
     }
     
-/* Social icons fixed on left side */
+    /* Social icons fixed on left side */
     .social-icons {
       position: fixed;
       top: 40%;
@@ -156,28 +156,145 @@
       transform: scale(1.2);
     }
     .hidden {
-  display: none;
-}
+      display: none;
+    }
 
-#loadMore {
-  display: block;
-  margin: 1.5rem auto;
-  padding: 0.75rem 1.5rem;
-  background-color: #3f51b5;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
+    #loadMore {
+      display: block;
+      margin: 1.5rem auto;
+      padding: 0.75rem 1.5rem;
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
 
-#loadMore:hover {
-  background-color: #ffcc00;
-  color: #3f51b5;
-}
+    #loadMore:hover {
+      background-color: #ffcc00;
+      color: #3f51b5;
+    }
 
+    /* New styles for blog posts section */
+    .content-wrapper {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .main-content {
+      flex: 1;
+      padding-right: 20px;
+    }
+    
+    .posts-sidebar {
+      width: 350px;
+      padding: 20px;
+      background: #f0f4f8;
+      border-radius: 10px;
+      margin-top: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 20px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .posts-sidebar h2 {
+      color: #3f51b5;
+      text-align: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #3f51b5;
+    }
+    
+    .post-card {
+      background: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .post-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    
+    .post-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .post-card h3 {
+      color: #3f51b5;
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    
+    .post-card p {
+      color: #555;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 10px;
+    }
+    
+    .post-tag {
+      display: inline-block;
+      padding: 3px 8px;
+      background: #e0e7ff;
+      color: #3f51b5;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    
+    .tag-qa { background: #e0f2fe; color: #0369a1; }
+    .tag-devops { background: #ecfdf5; color: #047857; }
+    .tag-pm { background: #fef2f2; color: #b91c1c; }
+    .tag-automation { background: #f5f3ff; color: #7c3aed; }
+    
+    .read-more {
+      display: inline-block;
+      margin-top: 10px;
+      color: #3f51b5;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    
+    .read-more:hover {
+      text-decoration: underline;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .content-wrapper {
+        flex-direction: column;
+      }
+      
+      .posts-sidebar {
+        width: 100%;
+        position: static;
+        margin-top: 50px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -196,188 +313,275 @@
       <a href="#subscribe">Contact</a>
     </nav>
   </header>
-  <script>
-  const loadMoreBtn = document.getElementById("loadMore");
-  const hiddenPosts = document.querySelectorAll(".post-card.hidden");
-  let currentIndex = 0;
-  const postsPerClick = 2;
 
-  loadMoreBtn.addEventListener("click", () => {
-    for (let i = 0; i < postsPerClick; i++) {
-      if (currentIndex < hiddenPosts.length) {
-        hiddenPosts[currentIndex].classList.remove("hidden");
-        currentIndex++;
-      }
-    }
-
-    // Hide button if no more posts
-    if (currentIndex >= hiddenPosts.length) {
-      loadMoreBtn.style.display = "none";
-    }
-  });
-</script>
-
- <!-- Social icons left side -->
+  <!-- Social icons left side -->
   <div class="social-icons" aria-label="Social Media Links">
     <a href="https://www.linkedin.com/in/meseret-akalu-49752b116/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
     <a href="https://github.com/meseretak" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
     <a href="https://x.com/meseretak" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
     <a href="mailto:meseretinsa@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    <a href="https://www.facebook.com/mesiak/="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.facebook.com/mesiak/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
     <a href="https://www.instagram.com/meseretakofficilals?igsh=MTdsaXlhZXpraDg2Yg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     <a href="https://youtube.com/@coctube?si=kG5Ohyo_dL1cpRnS" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
     <a href="https://t.me/meseretak" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
   </div>
-  <section id="about">
-    <h2>About Me</h2>
-    <p>As a Principal IT Project Quality Assurance at Awash Bank, I leverage my extensive experience in software quality assurance and DevOps to ensure the highest standards of quality and reliability in IT projects. With over 10 years of experience in the field, I have developed a strong proficiency in various tools and technologies, including Git, GitHub, Jenkins, Selenium, JMeter, Docker, Kubernetes, Puppet, Chef, Ansible, and Nagios.</p>
-    <p>I am also a certified Scrum Master and Agile practitioner, with a proven track record of leading and facilitating agile teams and processes. My expertise in creating test documents, reports, and matrices, as well as my ability to understand requirements, enable me to deliver high-quality results and ensure customer satisfaction. Additionally, I hold certifications in Java and Agile with Atlassian Jira, demonstrating my commitment to continuous learning and professional development.</p>
-    <ul>
-      <li>Version Control: Git, GitHub</li>
-      <li>CI/CD: Jenkins, GitLab</li>
-      <li>Test Automation: Selenium, Cypress</li>
-      <li>Performance Testing: JMeter</li>
-      <li>Containerization: Docker</li>
-      <li>Orchestration: Kubernetes</li>
-      <li>Config Management: Puppet, Chef, Ansible</li>
-      <li>Monitoring: Nagios</li>
-      <li>Agile & Scrum Methodologies</li>
-      <li>Soft Skills: Communication, Documentation, Analytical Thinking</li>
-    </ul>
-  </section>
-
-  <section id="experience">
-    <h2>Experience</h2>
-    <ul>
-      <li><strong>Principal QA, Awash Bank</strong> – Apr 2024–Present</li>
-      <li><strong>Senior QA, Awash Bank</strong> – Jan 2022–Apr 2024</li>
-      <li><strong>DevOps Engineer, INSA</strong> – 2021–2022</li>
-      <li><strong>Trainer, Gebeya Inc</strong> – 2020–2021</li>
-      <li><strong>Knowledge Management Supervisor, INSA</strong> – 2019–2022</li>
-      <li><strong>QA Engineer & Jira Expert</strong> – 2015–2022</li>
-      <li><strong>Senior Software Test Engineer</strong> – 2015–2017</li>
-    </ul>
-  </section>
-
-  <section id="skills">
-    <h2>Tools Proficiency</h2>
-    <div class="bar"><div class="bar-fill" style="width:100%">TestLink - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">Selenium - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">Cypress - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">Jira - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">Jenkins - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">GitLab - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">JMeter - 100%</div></div>
-  </section>
-
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <div class="certs">
-      <div>DevOps Executive</div>
-      <div>Agile Master (SAMC)</div>
-      <div>Scrum Master</div>
-      <div>Azure Certified</div>
-    </div>
-  </section>
-
-  <section id="projects">
-  <h2>Major Projects</h2>
-  <h3>🛠 INSA ERP Projects (12+)</h3>
-  <ul>
-    <li>INSA ERP (internal)</li>
-    <li>ERP for Ministry of Foreign Affairs</li>
-    <li>ERP for Ethiopian Electric Power</li>
-    <li>ERP for Oromia Water Corporation</li>
-    <li>ERP for Amhara Water Corporation</li>
-    <li>ERP for Ministry of Technology</li>
-    <li>+ other government digital transformation initiatives</li>
-  </ul>
   
-  <h3>🏦 Awash Bank Internal Systems</h3>
-  <ul>
-    <li>MMS – Messaging Management System</li>
-    <li>HRMS – Human Resources Management System</li>
-    <li>FCMS – Finance & Control Management System</li>
-    <li>PMS – Performance Management System</li>
-    <li>Attendance Management</li>
-  </ul>
+  <div class="content-wrapper">
+    <div class="main-content">
+      <section id="about">
+        <h2>About Me</h2>
+        <p>As a Principal IT Project Quality Assurance at Awash Bank, I leverage my extensive experience in software quality assurance and DevOps to ensure the highest standards of quality and reliability in IT projects. With over 10 years of experience in the field, I have developed a strong proficiency in various tools and technologies, including Git, GitHub, Jenkins, Selenium, JMeter, Docker, Kubernetes, Puppet, Chef, Ansible, and Nagios.</p>
+        <p>I am also a certified Scrum Master and Agile practitioner, with a proven track record of leading and facilitating agile teams and processes. My expertise in creating test documents, reports, and matrices, as well as my ability to understand requirements, enable me to deliver high-quality results and ensure customer satisfaction. Additionally, I hold certifications in Java and Agile with Atlassian Jira, demonstrating my commitment to continuous learning and professional development.</p>
+        <ul>
+          <li>Version Control: Git, GitHub</li>
+          <li>CI/CD: Jenkins, GitLab</li>
+          <li>Test Automation: Selenium, Cypress</li>
+          <li>Performance Testing: JMeter</li>
+          <li>Containerization: Docker</li>
+          <li>Orchestration: Kubernetes</li>
+          <li>Config Management: Puppet, Chef, Ansible</li>
+          <li>Monitoring: Nagios</li>
+          <li>Agile & Scrum Methodologies</li>
+          <li>Soft Skills: Communication, Documentation, Analytical Thinking</li>
+        </ul>
+      </section>
 
-  <h3>🚀 Strategic Projects at Awash Bank</h3>
-  <ul>
-    <li>Awash Birr Pro – A super app with over 30 integrated services</li>
-    <li>Core Banking Integration with external services</li>
-    <li>Multiple government-to-bank and fintech integrations</li>
-  </ul>
+      <section id="experience">
+        <h2>Experience</h2>
+        <ul>
+          <li><strong>Principal QA, Awash Bank</strong> – Apr 2024–Present</li>
+          <li><strong>Senior QA, Awash Bank</strong> – Jan 2022–Apr 2024</li>
+          <li><strong>DevOps Engineer, INSA</strong> – 2021–2022</li>
+          <li><strong>Trainer, Gebeya Inc</strong> – 2020–2021</li>
+          <li><strong>Knowledge Management Supervisor, INSA</strong> – 2019–2022</li>
+          <li><strong>QA Engineer & Jira Expert</strong> – 2015–2022</li>
+          <li><strong>Senior Software Test Engineer</strong> – 2015–2017</li>
+        </ul>
+      </section>
 
-  <h3>🔐 Security Projects</h3>
-  <ul>
-    <li>Secure authentication implementation</li>
-    <li>Vulnerability scanning and patching automation</li>
-    <li>Penetration testing support for online platforms</li>
-  </ul>
-</section>
+      <section id="skills">
+        <h2>Tools Proficiency</h2>
+        <div class="bar"><div class="bar-fill" style="width:100%">TestLink - 100%</div></div>
+        <div class="bar"><div class="bar-fill" style="width:100%">Selenium - 100%</div></div>
+        <div class="bar"><div class="bar-fill" style="width:100%">Cypress - 100%</div></div>
+        <div class="bar"><div class="bar-fill" style="width:100%">Jira - 100%</div></div>
+        <div class="bar"><div class="bar-fill" style="width:100%">Jenkins - 100%</div></div>
+        <div class="bar"><div class="bar-fill" style="width:100%">GitLab - 100%</div></div>
+        <div class="bar"><div class="bar-fill" style="width:100%">JMeter - 100%</div></div>
+      </section>
 
-  <section id="education">
-    <h2>Education</h2>
-    <p>BSc in Computer Science, Addis Ababa University (2003–2006)</p>
-  </section>
+      <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="certs">
+          <div>DevOps Executive</div>
+          <div>Agile Master (SAMC)</div>
+          <div>Scrum Master</div>
+          <div>Azure Certified</div>
+        </div>
+      </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <div class="contact">
-      <div><i class="fas fa-envelope"></i> meseretak@awashbank.com</div>
-      <div><i class="fas fa-phone"></i> 0912465247</div>
-      <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/meseret-akalu-49752b116">LinkedIn</a></div>
-      <div><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/meseretak/">Facebook</a></div>
+      <section id="projects">
+        <h2>Major Projects</h2>
+        <h3>🛠 INSA ERP Projects (12+)</h3>
+        <ul>
+          <li>INSA ERP (internal)</li>
+          <li>ERP for Ministry of Foreign Affairs</li>
+          <li>ERP for Ethiopian Electric Power</li>
+          <li>ERP for Oromia Water Corporation</li>
+          <li>ERP for Amhara Water Corporation</li>
+          <li>ERP for Ministry of Technology</li>
+          <li>+ other government digital transformation initiatives</li>
+        </ul>
+        
+        <h3>🏦 Awash Bank Internal Systems</h3>
+        <ul>
+          <li>MMS – Messaging Management System</li>
+          <li>HRMS – Human Resources Management System</li>
+          <li>FCMS – Finance & Control Management System</li>
+          <li>PMS – Performance Management System</li>
+          <li>Attendance Management</li>
+        </ul>
+
+        <h3>🚀 Strategic Projects at Awash Bank</h3>
+        <ul>
+          <li>Awash Birr Pro – A super app with over 30 integrated services</li>
+          <li>Core Banking Integration with external services</li>
+          <li>Multiple government-to-bank and fintech integrations</li>
+        </ul>
+
+        <h3>🔐 Security Projects</h3>
+        <ul>
+          <li>Secure authentication implementation</li>
+          <li>Vulnerability scanning and patching automation</li>
+          <li>Penetration testing support for online platforms</li>
+        </ul>
+      </section>
+
+      <section id="education">
+        <h2>Education</h2>
+        <p>BSc in Computer Science, Addis Ababa University (2003–2006)</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact">
+          <div><i class="fas fa-envelope"></i> meseretak@awashbank.com</div>
+          <div><i class="fas fa-phone"></i> 0912465247</div>
+          <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/meseret-akalu-49752b116">LinkedIn</a></div>
+          <div><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/meseretak/">Facebook</a></div>
+        </div>
+      </section>
+      
+      <section id="cv" class="fade-in">
+        <h2>My CV</h2>
+        <p>You can view or download my full CV below:</p>
+        <embed src="Meseret_Akalu_CV.pdf" type="application/pdf" width="100%" height="600px" style="border:1px solid #ccc; border-radius:8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"></embed>
+        <br>
+        <a href="Meseret_Akalu_CV.pdf" download style="display:inline-block;margin-top:1rem;padding:0.75rem 1.5rem;background:#3f51b5;color:#fff;text-decoration:none;border-radius:5px;">📄 Download CV</a>
+      </section>
+
+      <section id="comments" class="fade-in">
+        <h2>Leave a Comment About This Website</h2>
+        <form action="https://formspree.io/f/mblyrnjk" method="POST">
+          <label for="visitorName">Your Name</label>
+          <input type="text" name="name" id="visitorName" placeholder="Your name" required>
+
+          <label for="commentText">Comment</label>
+          <textarea name="comment" id="commentText" rows="4" placeholder="What do you think about this site?" required></textarea>
+
+          <button type="submit">Submit Comment</button>
+        </form>
+      </section>
+      
+      <section id="subscribe">
+        <h2>Contact Me</h2>
+        <form action="https://formspree.io/f/mblyrnjk" method="POST" onsubmit="return checkMessageLength(event)">
+          <label for="topic">Conversation topic *</label>
+          <select id="topic" name="topic" required>
+            <option value="" disabled selected>Select a topic</option>
+            <option value="Service request">Service request</option>
+            <option value="Request a demo">Request a demo</option>
+            <option value="Support">Support</option>
+            <option value="Careers">Careers</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <label for="email">Your email *</label>
+          <input type="email" name="email" id="email" required placeholder="Enter your email">
+
+          <label for="message">Your message *</label>
+          <textarea name="message" id="message" rows="5" minlength="25" maxlength="750" required placeholder="Type your message here..."></textarea>
+          <div class="char-count" id="charCount">0/750</div>
+
+          <button type="submit" id="submitBtn" disabled>Send message</button>
+        </form>
+      </section>
     </div>
-  </section>
+    
+    <div class="posts-sidebar">
+      <h2>Latest Posts & Articles</h2>
+      
+      <div class="post-card">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="QA Automation">
+        <span class="post-tag tag-qa">QA</span>
+        <span class="post-tag tag-automation">Automation</span>
+        <h3>Implementing Effective Test Automation Strategies</h3>
+        <p>Learn how to build a robust test automation framework that scales with your project needs while maintaining reliability.</p>
+        <div class="post-meta">
+          <span>Jun 15, 2024</span>
+          <span>5 min read</span>
+        </div>
+        <a href="#" class="read-more">Read more →</a>
+      </div>
+      
+      <div class="post-card">
+        <img src="https://images.unsplash.com/photo-1555421689-3f034debb7a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="DevOps Pipeline">
+        <span class="post-tag tag-devops">DevOps</span>
+        <span class="post-tag tag-automation">CI/CD</span>
+        <h3>Building a Complete CI/CD Pipeline with GitHub Actions</h3>
+        <p>Step-by-step guide to setting up a production-ready CI/CD workflow using GitHub Actions and Kubernetes.</p>
+        <div class="post-meta">
+          <span>May 28, 2024</span>
+          <span>8 min read</span>
+        </div>
+        <a href="#" class="read-more">Read more →</a>
+      </div>
+      
+      <div class="post-card hidden">
+        <img src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Project Management">
+        <span class="post-tag tag-pm">Project Management</span>
+        <span class="post-tag tag-qa">Quality</span>
+        <h3>Balancing Quality and Speed in Agile Projects</h3>
+        <p>Practical techniques for maintaining high quality standards while meeting tight deadlines in agile environments.</p>
+        <div class="post-meta">
+          <span>May 15, 2024</span>
+          <span>6 min read</span>
+        </div>
+        <a href="#" class="read-more">Read more →</a>
+      </div>
+      
+      <div class="post-card hidden">
+        <img src="https://images.unsplash.com/photo-1624953587687-daf255b6b80a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Performance Testing">
+        <span class="post-tag tag-qa">Performance</span>
+        <span class="post-tag tag-devops">Monitoring</span>
+        <h3>Advanced JMeter Techniques for Enterprise Applications</h3>
+        <p>Learn how to design and execute performance tests that accurately simulate real-world user behavior.</p>
+        <div class="post-meta">
+          <span>Apr 30, 2024</span>
+          <span>7 min read</span>
+        </div>
+        <a href="#" class="read-more">Read more →</a>
+      </div>
+      
+      <div class="post-card hidden">
+        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Security Testing">
+        <span class="post-tag tag-qa">Security</span>
+        <span class="post-tag tag-devops">DevSecOps</span>
+        <h3>Integrating Security Testing into Your DevOps Pipeline</h3>
+        <p>How to implement security testing as part of your CI/CD process without slowing down deployments.</p>
+        <div class="post-meta">
+          <span>Apr 18, 2024</span>
+          <span>9 min read</span>
+        </div>
+        <a href="#" class="read-more">Read more →</a>
+      </div>
+      
+      <div class="post-card hidden">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Containerization">
+        <span class="post-tag tag-devops">Docker</span>
+        <span class="post-tag tag-devops">Kubernetes</span>
+        <h3>Containerization Best Practices for QA Environments</h3>
+        <p>Optimizing Docker and Kubernetes setups for efficient testing across different environments.</p>
+        <div class="post-meta">
+          <span>Mar 25, 2024</span>
+          <span>6 min read</span>
+        </div>
+        <a href="#" class="read-more">Read more →</a>
+      </div>
+      
+      <div class="post-card hidden">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Banking Tech">
+        <span class="post-tag tag-pm">Banking</span>
+        <span class="post-tag tag-qa">FinTech</span>
+        <h3>Digital Transformation in Banking: QA Challenges</h3>
+        <p>Addressing unique quality assurance requirements in modern banking applications.</p>
+        <div class="post-meta">
+          <span>Mar 10, 2024</span>
+          <span>8 min read</span>
+        </div>
+        <a href="#" class="read-more">Read more →</a>
+      </div>
+      
+      <button id="loadMore" class="load-more-btn">Load More Articles</button>
+    </div>
+  </div>
   
-
- <section id="cv" class="fade-in">
-  <h2>My CV</h2>
-  <p>You can view or download my full CV below:</p>
-  <embed src="Meseret_Akalu_CV.pdf" type="application/pdf" width="100%" height="600px" style="border:1px solid #ccc; border-radius:8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"></embed>
-  <br>
-  <a href="Meseret_Akalu_CV.pdf" download style="display:inline-block;margin-top:1rem;padding:0.75rem 1.5rem;background:#3f51b5;color:#fff;text-decoration:none;border-radius:5px;">📄 Download CV</a>
-</section>
-
-<section id="comments" class="fade-in">
-  <h2>Leave a Comment About This Website</h2>
-  <form action="https://formspree.io/f/mblyrnjk" method="POST">
-    <label for="visitorName">Your Name</label>
-    <input type="text" name="name" id="visitorName" placeholder="Your name" required>
-
-    <label for="commentText">Comment</label>
-    <textarea name="comment" id="commentText" rows="4" placeholder="What do you think about this site?" required></textarea>
-
-    <button type="submit">Submit Comment</button>
-  </form>
-</section>
- <section id="subscribe">
-    <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/mblyrnjk" method="POST" onsubmit="return checkMessageLength(event)">
-      <label for="topic">Conversation topic *</label>
-      <select id="topic" name="topic" required>
-        <option value="" disabled selected>Select a topic</option>
-        <option value="Service request">Service request</option>
-        <option value="Request a demo">Request a demo</option>
-        <option value="Support">Support</option>
-        <option value="Careers">Careers</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <label for="email">Your email *</label>
-      <input type="email" name="email" id="email" required placeholder="Enter your email">
-
-      <label for="message">Your message *</label>
-      <textarea name="message" id="message" rows="5" minlength="25" maxlength="750" required placeholder="Type your message here..."></textarea>
-      <div class="char-count" id="charCount">0/750</div>
-
-      <button type="submit" id="submitBtn" disabled>Send message</button>
-    </form>
-  </section>
+  <footer>
+    &copy; 2025 Meseret Akalu. All rights reserved.
+  </footer>
 
   <script>
+    // Contact form character counter
     const message = document.getElementById('message');
     const charCount = document.getElementById('charCount');
     const submitBtn = document.getElementById('submitBtn');
@@ -396,10 +600,35 @@
       }
       return true;
     }
+
+    // Load More functionality for posts
+    document.addEventListener('DOMContentLoaded', function() {
+      const loadMoreBtn = document.getElementById('loadMore');
+      const hiddenPosts = document.querySelectorAll('.post-card.hidden');
+      let postsToShow = 2;
+      let currentVisible = 0;
+      
+      // Show initial posts
+      showPosts();
+      
+      loadMoreBtn.addEventListener('click', function() {
+        showPosts();
+      });
+      
+      function showPosts() {
+        let shown = 0;
+        for (let i = currentVisible; i < hiddenPosts.length && shown < postsToShow; i++) {
+          hiddenPosts[i].classList.remove('hidden');
+          shown++;
+          currentVisible++;
+        }
+        
+        // Hide button if no more posts
+        if (currentVisible >= hiddenPosts.length) {
+          loadMoreBtn.style.display = 'none';
+        }
+      }
+    });
   </script>
- 
-  <footer>
-    &copy; 2025 Meseret Akalu. All rights reserved.
-  </footer>
 </body>
 </html>
