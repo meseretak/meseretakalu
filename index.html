@@ -26,6 +26,18 @@
     }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    <!-- Left animated banner -->
+<div class="side-banner left-banner">
+  <div class="floating-shape"></div>
+  <div class="floating-shape delay"></div>
+</div>
+
+<!-- Right animated banner -->
+<div class="side-banner right-banner">
+  <div class="floating-shape"></div>
+  <div class="floating-shape delay"></div>
+</div>
+
     header {
       background-color: #3f51b5;
       color: white;
@@ -125,6 +137,72 @@
       color: white;
       margin-top: 2rem;
     }
+    /* Side banners container */
+.side-banner {
+  position: fixed;
+  top: 0;
+  width: 60px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  pointer-events: none; /* don't block clicks */
+  z-index: 10;
+}
+
+/* Left and right positioning */
+.left-banner {
+  left: 0;
+  background: linear-gradient(135deg, #3f51b5 0%, #ff9800 100%);
+  box-shadow: 2px 0 8px rgba(63,81,181,0.5);
+}
+
+.right-banner {
+  right: 0;
+  background: linear-gradient(135deg, #ff9800 0%, #3f51b5 100%);
+  box-shadow: -2px 0 8px rgba(255,152,0,0.5);
+}
+
+/* The floating shapes */
+.floating-shape {
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  animation: floatUpDown 4s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+/* Delay for second shapes */
+.floating-shape.delay {
+  animation-delay: 2s;
+  opacity: 0.5;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.5);
+}
+
+/* Floating animation */
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+}
+
+/* Responsive: hide on small screens */
+@media (max-width: 768px) {
+  .side-banner {
+    display: none;
+  }
+}
+
   </style>
 </head>
 <body>
