@@ -14,13 +14,8 @@
       color: #222;
       animation: fadeIn 1s ease-in;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     header {
       background-color: #3f51b5;
       color: white;
@@ -47,26 +42,15 @@
       font-weight: 500;
       transition: color 0.3s ease;
     }
-    nav a:hover {
-      text-decoration: underline;
-      color: #ffcc00;
-    }
+    nav a:hover { text-decoration: underline; color: #ffcc00; }
     section {
       padding: 2rem;
       max-width: 900px;
       margin: auto;
       animation: slideUp 0.8s ease;
     }
-    h1, h2 {
-      color: #3f51b5;
-      transition: color 0.3s ease;
-    }
+    h1, h2 { color: #3f51b5; transition: color 0.3s ease; }
     h2:hover { color: #ff9800; }
-    .skills, .certs, .projects, .contact {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
     .bar {
       background: #e0e0e0;
       border-radius: 20px;
@@ -81,18 +65,50 @@
       line-height: 20px;
       font-size: 0.9rem;
     }
-    .projects div, .skills div, .certs div, .contact div {
-      background: #fff;
+    form {
+      background: white;
       padding: 1rem;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-top: 1rem;
     }
-    .projects div:hover, .skills div:hover, .certs div:hover, .contact div:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    select, textarea, input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.25rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    select:invalid { color: #999; }
+    textarea { resize: vertical; }
+    .char-count {
+      font-size: 0.8rem;
+      text-align: right;
+      color: #555;
+      margin-top: 0.25rem;
+    }
+    button {
+      margin-top: 1rem;
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      float: right;
+    }
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
     }
     footer {
+      clear: both;
       text-align: center;
       padding: 1rem;
       background-color: #3f51b5;
@@ -102,6 +118,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <img src="profile.jpg" alt="Meseret Akalu" class="profile-img">
     <h1>Meseret Akalu</h1>
@@ -113,7 +130,7 @@
       <a href="#certifications">Certifications</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+      <a href="#subscribe">Contact</a>
     </nav>
   </header>
 
@@ -192,16 +209,49 @@
     </div>
   </section>
  <section id="subscribe">
-    <h2>Stay Connected</h2>
-    <form action="https://formspree.io/f/mblyrnjk" method="POST">
-      <label for="email">Your email:</label>
-      <input type="email" name="email" required placeholder="Enter your email">
-      <label for="message">Your message:</label>
-      <textarea name="message" rows="4" placeholder="Type your message here..."></textarea>
-      <button type="submit">Send</button>
+    <h2>Contact Me</h2>
+    <form action="https://formspree.io/f/mblyrnjk" method="POST" onsubmit="return checkMessageLength(event)">
+      <label for="topic">Conversation topic *</label>
+      <select id="topic" name="topic" required>
+        <option value="" disabled selected>Select a topic</option>
+        <option value="Service request">Service request</option>
+        <option value="Request a demo">Request a demo</option>
+        <option value="Support">Support</option>
+        <option value="Careers">Careers</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="email">Your email *</label>
+      <input type="email" name="email" id="email" required placeholder="Enter your email">
+
+      <label for="message">Your message *</label>
+      <textarea name="message" id="message" rows="5" minlength="25" maxlength="750" required placeholder="Type your message here..."></textarea>
+      <div class="char-count" id="charCount">0/750</div>
+
+      <button type="submit" id="submitBtn" disabled>Send message</button>
     </form>
   </section>
 
+  <script>
+    const message = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+    const submitBtn = document.getElementById('submitBtn');
+
+    message.addEventListener('input', () => {
+      const length = message.value.length;
+      charCount.textContent = `${length}/750`;
+      submitBtn.disabled = length < 25;
+    });
+
+    function checkMessageLength(event) {
+      if (message.value.length < 25) {
+        alert("Message must be at least 25 characters.");
+        event.preventDefault();
+        return false;
+      }
+      return true;
+    }
+  </script>
  
   <footer>
     &copy; 2025 Meseret Akalu. All rights reserved.
