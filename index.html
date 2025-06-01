@@ -247,6 +247,28 @@
       <div><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/meseretak/">Facebook</a></div>
     </div>
   </section>
+  <section id="cv" class="fade-in">
+  <h2>My CV</h2>
+  <p>You can download my full CV using the link below:</p>
+  <a href="Meseret_Akalu_CV.pdf" download style="display:inline-block;padding:0.75rem 1.5rem;background:#3f51b5;color:#fff;text-decoration:none;border-radius:5px;">📄 Download CV</a>
+  <div class="cv-upload">
+    <label for="uploadCV">Want to share your resume with me?</label><br>
+    <input type="file" id="uploadCV" name="uploadCV" accept="application/pdf">
+  </div>
+</section>
+
+<section id="comments" class="fade-in">
+  <h2>Leave a Comment About This Website</h2>
+  <form action="https://formspree.io/f/mblyrnjk" method="POST">
+    <label for="visitorName">Your Name</label>
+    <input type="text" name="name" id="visitorName" placeholder="Your name" required>
+
+    <label for="commentText">Comment</label>
+    <textarea name="comment" id="commentText" rows="4" placeholder="What do you think about this site?" required></textarea>
+
+    <button type="submit">Submit Comment</button>
+  </form>
+</section>
  <section id="subscribe">
     <h2>Contact Me</h2>
     <form action="https://formspree.io/f/mblyrnjk" method="POST" onsubmit="return checkMessageLength(event)">
