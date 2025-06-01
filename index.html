@@ -193,10 +193,12 @@
   </section>
  <section id="subscribe">
     <h2>Stay Connected</h2>
-    <form onsubmit="return validateEmail(event)">
-      <label for="email">Subscribe to Our Newsletter:</label>
-      <input type="email" id="email" name="email" required placeholder="Enter your email">
-      <button type="submit">Subscribe</button>
+    <form action="https://formspree.io/f/mblyrnjk" method="POST">
+      <label for="email">Your email:</label>
+      <input type="email" name="email" required placeholder="Enter your email">
+      <label for="message">Your message:</label>
+      <textarea name="message" rows="4" placeholder="Type your message here..."></textarea>
+      <button type="submit">Send</button>
     </form>
   </section>
 
