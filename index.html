@@ -121,13 +121,50 @@
       margin-top: 2rem;
     }
     a { color: #3f51b5; }
+
+    /* Social icons fixed on left side */
+    .social-icons {
+      position: fixed;
+      top: 40%;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding: 10px;
+      background: #3f51b5;
+      border-radius: 0 8px 8px 0;
+      z-index: 1000;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 16px;
+      text-align: center;
+      padding: 8px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .social-icons a:hover {
+      background: #ffcc00;
+      color: #3f51b5;
+      border-radius: 50%;
+      transform: scale(1.2);
+    }
   </style>
 </head>
 
 <body>
 
+  <!-- Social icons left side -->
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/meseretakalu" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/your-github-username" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://twitter.com/your-twitter" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="mailto:your@email.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+
   <header>
-    <img src="profile.jpg" alt="Meseret Akalu" class="profile-img">
+    <img src="profile.jpg" alt="Meseret Akalu" class="profile-img" />
     <h1>Meseret Akalu</h1>
     <p>Project Manager | QA Specialist | DevOps Evangelist</p>
     <nav>
@@ -206,107 +243,59 @@
     </ul>
     <h3>🔐 Security Projects</h3>
     <ul>
-      <li>Secure auth, Pen-testing support, Auto patching</li>
+      <li>SIEM, DLP, Forensics Tools Deployment, Security Incident Management</li>
     </ul>
   </section>
 
   <section id="education">
     <h2>Education</h2>
-    <p>BSc in Computer Science, Addis Ababa University (2003–2006)</p>
-  </section>
-
-  <section id="cv" class="fade-in">
-    <h2>My CV</h2>
-    <p>You can view or download my full CV below:</p>
-    <embed src="Meseret_Akalu_CV.pdf" type="application/pdf" width="100%" height="600px" style="border:1px solid #ccc; border-radius:8px;"></embed>
-    <br>
-    <a href="Meseret_Akalu_CV.pdf" download style="display:inline-block;margin-top:1rem;padding:0.75rem 1.5rem;background:#3f51b5;color:#fff;text-decoration:none;border-radius:5px;">📄 Download CV</a>
-  </section>
-
-  <section id="comments" class="fade-in">
-    <h2>Leave a Comment About This Website</h2>
-    <form action="https://formspree.io/f/mblyrnjk" method="POST">
-      <label for="visitorName">Your Name</label>
-      <input type="text" name="name" id="visitorName" required placeholder="Your name">
-      <label for="commentText">Comment</label>
-      <textarea name="comment" id="commentText" rows="4" required placeholder="What do you think about this site?"></textarea>
-      <button type="submit">Submit Comment</button>
-    </form>
+    <ul>
+      <li>B.A. Computer Science, St. Mary University</li>
+      <li>Diploma in Accounting, ACCA</li>
+      <li>Various IT and Management Trainings</li>
+    </ul>
   </section>
 
   <section id="subscribe">
     <h2>Contact Me</h2>
-    <form action="https://formspree.io/f/mblyrnjk" method="POST">
-      <label for="topic">Conversation topic *</label>
-      <select id="topic" name="topic" required>
-        <option value="" disabled selected>Select a topic</option>
-        <option value="Service request">Service request</option>
-        <option value="Request a demo">Request a demo</option>
-        <option value="Support">Support</option>
-        <option value="Careers">Careers</option>
-        <option value="Other">Other</option>
+    <form id="contact-form">
+      <label for="subject">Subject:</label>
+      <select id="subject" name="subject" required>
+        <option value="">Select</option>
+        <option value="qa">Quality Assurance</option>
+        <option value="devops">DevOps</option>
+        <option value="projects">Project Management</option>
+        <option value="other">Other</option>
       </select>
-
-      <label for="email">Your email *</label>
-      <input type="email" name="email" id="email" required placeholder="Enter your email">
-
-      <label for="message">Your message *</label>
-      <textarea name="message" id="message" rows="5" required placeholder="Write your message..."></textarea>
-
-      <button type="submit">Send Message</button>
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+      <button type="submit" disabled>Send Message</button>
     </form>
   </section>
 
   <footer>
-    &copy; 2025 Meseret Akalu | Built with 💙 QA Precision & DevOps Passion
-    <style>
-  .elementor-widget-social-icons {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    padding: 1rem;
-    justify-content: center;
-    scroll-snap-type: x mandatory;
-  }
-
-  .elementor-widget-social-icons a {
-    font-size: 1.5rem;
-    color: white;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    scroll-snap-align: center;
-  }
-
-  .elementor-widget-social-icons a:hover {
-    transform: scale(1.15);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  .social-facebook { background-color: #3b5998; }
-  .social-twitter { background-color: #1da1f2; }
-  .social-linkedin { background-color: #0077b5; }
-  .social-instagram { background-color: #e4405f; }
-  .social-youtube { background-color: #ff0000; }
-  .social-github { background-color: #333; }
-  .social-tiktok { background-color: #000000; }
-</style>
-
-<div class="elementor-widget-social-icons">
-  <a class="social-facebook" href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-  <a class="social-twitter" href="https://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-  <a class="social-linkedin" href="https://www.linkedin.com/in/meseretakalu" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-  <a class="social-instagram" href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-  <a class="social-youtube" href="https://www.youtube.com/" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-  <a class="social-github" href="https://www.github.com/" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-  <a class="social-tiktok" href="https://www.tiktok.com/" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-</div>
-
+    © 2024 Meseret Akalu - Powered by Experience & Passion.
   </footer>
 
+  <script>
+    const subject = document.getElementById('subject');
+    const message = document.getElementById('message');
+    const btn = document.querySelector('button[type="submit"]');
+    
+    function toggleBtn() {
+      btn.disabled = !subject.value || !message.value.trim();
+    }
+    
+    subject.addEventListener('change', toggleBtn);
+    message.addEventListener('input', toggleBtn);
+
+    // Optional: handle form submission
+    document.getElementById('contact-form').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thanks for reaching out, I will get back to you soon!');
+      e.target.reset();
+      btn.disabled = true;
+    });
+  </script>
 </body>
 </html>
