@@ -202,20 +202,7 @@
     </form>
   </section>
 
-  <script>
-    function validateEmail(event) {
-      const emailInput = document.getElementById("email");
-      const emailValue = emailInput.value;
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(emailValue)) {
-        alert("Please enter a valid email address.");
-        event.preventDefault();
-        return false;
-      }
-      alert("Subscription successful! Thank you.");
-      return true;
-    }
-  </script>
+ 
   <footer>
     &copy; 2025 Meseret Akalu. All rights reserved.
   </footer>
