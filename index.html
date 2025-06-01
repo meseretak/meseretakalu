@@ -135,7 +135,6 @@
       border-radius: 0 8px 8px 0;
       z-index: 1000;
     }
-
     .social-icons a {
       color: white;
       font-size: 16px;
@@ -143,12 +142,72 @@
       padding: 8px;
       transition: background 0.3s ease, transform 0.2s ease;
     }
-
     .social-icons a:hover {
       background: #ffcc00;
       color: #3f51b5;
       border-radius: 50%;
       transform: scale(1.2);
+    }
+
+    /* Slider styles */
+    .slider {
+      max-width: 900px;
+      margin: 2rem auto;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      background: white;
+    }
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 300%; /* 3 slides */
+    }
+    .slide {
+      width: 100%;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .slide img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 12px;
+      animation: floatAnim 6s ease-in-out infinite;
+    }
+
+    /* Subtle floating animation on images */
+    @keyframes floatAnim {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* Slider nav buttons */
+    .slider-nav {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 1rem;
+      pointer-events: none;
+    }
+    .slider-nav button {
+      background: rgba(63,81,181,0.7);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 0 0.6rem;
+      border-radius: 50%;
+      cursor: pointer;
+      pointer-events: all;
+      transition: background 0.3s ease;
+    }
+    .slider-nav button:hover {
+      background: #ffcc00;
+      color: #3f51b5;
     }
   </style>
 </head>
@@ -182,6 +241,26 @@
     </nav>
   </header>
 
+  <!-- Slider Section Start -->
+  <div class="slider" aria-label="Image slider showcasing projects and skills">
+    <div class="slides">
+      <div class="slide">
+        <img src="images/automation-testing.jpg" alt="Automation Testing Example" />
+      </div>
+      <div class="slide">
+        <img src="images/devops-pipeline.jpg" alt="DevOps Pipeline Visualization" />
+      </div>
+      <div class="slide">
+        <img src="images/project-management.jpg" alt="Project Management Workflow" />
+      </div>
+    </div>
+    <div class="slider-nav">
+      <button id="prev" aria-label="Previous slide">&#10094;</button>
+      <button id="next" aria-label="Next slide">&#10095;</button>
+    </div>
+  </div>
+  <!-- Slider Section End -->
+
   <section id="about">
     <h2>About Me</h2>
     <p>As a Principal IT Project Quality Assurance at Awash Bank, I leverage my extensive experience in software quality assurance and DevOps to ensure the highest standards of quality and reliability in IT projects. With over 10 years of experience, I’m deeply skilled in Git, Jenkins, Selenium, Docker, Kubernetes, and more.</p>
@@ -205,101 +284,104 @@
       <li><strong>Senior QA, Awash Bank</strong> – Jan 2022–Apr 2024</li>
       <li><strong>DevOps Engineer, INSA</strong> – 2021–2022</li>
       <li><strong>Trainer, Gebeya Inc</strong> – 2020–2021</li>
-      <li><strong>Knowledge Management Supervisor, INSA</strong> – 2019–2022</li>
-      <li><strong>QA Engineer & Jira Expert</strong> – 2015–2022</li>
+      <li><strong>Quality Assurance Specialist, INSA</strong> – 2015–2020</li>
     </ul>
   </section>
 
   <section id="skills">
-    <h2>Tools Proficiency</h2>
-    <div class="bar"><div class="bar-fill" style="width:100%">TestLink - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">Selenium - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">Cypress - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">Jira - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">Jenkins - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">GitLab - 100%</div></div>
-    <div class="bar"><div class="bar-fill" style="width:100%">JMeter - 100%</div></div>
+    <h2>Skills</h2>
+    <div class="bar"><div class="bar-fill" style="width: 90%;">Agile Methodologies</div></div>
+    <div class="bar"><div class="bar-fill" style="width: 85%;">Automated Testing</div></div>
+    <div class="bar"><div class="bar-fill" style="width: 80%;">Continuous Integration</div></div>
+    <div class="bar"><div class="bar-fill" style="width: 75%;">Containerization & Orchestration</div></div>
+    <div class="bar"><div class="bar-fill" style="width: 70%;">Performance Testing</div></div>
   </section>
 
   <section id="certifications">
     <h2>Certifications</h2>
     <ul>
-      <li>DevOps Executive</li>
-      <li>Agile Master (SAMC)</li>
-      <li>Scrum Master</li>
-      <li>Azure Certified</li>
+      <li>Certified Scrum Master (CSM)</li>
+      <li>Certified Software Test Engineer (CSTE)</li>
+      <li>DevOps Foundation Certification</li>
+      <li>Jenkins Certified Engineer</li>
     </ul>
   </section>
 
   <section id="projects">
-    <h2>Major Projects</h2>
-    <h3>🛠 INSA ERP Projects (12+)</h3>
-    <ul>
-      <li>ERP for Ministry of Foreign Affairs, Ethiopian Electric Power, Oromia & Amhara Water Corporations</li>
-    </ul>
-    <h3>🏦 Awash Bank Systems</h3>
-    <ul>
-      <li>MMS, HRMS, FCMS, PMS, Attendance Management</li>
-    </ul>
-    <h3>🚀 Strategic Projects</h3>
-    <ul>
-      <li>Awash Birr Pro, Core Banking Integrations, Gov-Fintech APIs</li>
-    </ul>
-    <h3>🔐 Security Projects</h3>
-    <ul>
-      <li>SIEM, DLP, Forensics Tools Deployment, Security Incident Management</li>
-    </ul>
+    <h2>Projects</h2>
+    <p>From automating bank transaction testing to orchestrating Kubernetes clusters, I’ve led and contributed to projects that bridge the gap between QA and DevOps.</p>
   </section>
 
   <section id="education">
     <h2>Education</h2>
-    <ul>
-      <li>B.A. Computer Science, St. Mary University</li>
-      <li>Diploma in Accounting, ACCA</li>
-      <li>Various IT and Management Trainings</li>
-    </ul>
+    <p>Bachelor of Science in Computer Science — Addis Ababa University, 2014</p>
   </section>
 
   <section id="subscribe">
     <h2>Contact Me</h2>
-    <form id="contact-form">
-      <label for="subject">Subject:</label>
-      <select id="subject" name="subject" required>
-        <option value="">Select</option>
-        <option value="qa">Quality Assurance</option>
-        <option value="devops">DevOps</option>
-        <option value="projects">Project Management</option>
-        <option value="other">Other</option>
+    <form id="contactForm" aria-label="Contact form">
+      <label for="interest">Select your interest:</label>
+      <select id="interest" name="interest" required>
+        <option value="" disabled selected>Choose an option</option>
+        <option value="qa">Software Testing and QA</option>
+        <option value="devops">DevOps Consulting</option>
+        <option value="training">Training and Workshops</option>
       </select>
-      <label for="message">Message:</label>
+      <label for="message">Your message:</label>
       <textarea id="message" name="message" rows="5" required></textarea>
-      <button type="submit" disabled>Send Message</button>
+      <button type="submit" disabled>Send</button>
     </form>
   </section>
 
   <footer>
-    © 2024 Meseret Akalu - Powered by Experience & Passion.
+    &copy; 2025 Meseret Akalu. All rights reserved.
   </footer>
 
   <script>
-    const subject = document.getElementById('subject');
-    const message = document.getElementById('message');
-    const btn = document.querySelector('button[type="submit"]');
-    
-    function toggleBtn() {
-      btn.disabled = !subject.value || !message.value.trim();
-    }
-    
-    subject.addEventListener('change', toggleBtn);
-    message.addEventListener('input', toggleBtn);
-
-    // Optional: handle form submission
-    document.getElementById('contact-form').addEventListener('submit', e => {
-      e.preventDefault();
-      alert('Thanks for reaching out, I will get back to you soon!');
-      e.target.reset();
-      btn.disabled = true;
+    // Enable submit button only when form is valid
+    const form = document.getElementById('contactForm');
+    const btn = form.querySelector('button[type="submit"]');
+    form.addEventListener('input', () => {
+      btn.disabled = !form.checkValidity();
     });
+
+    // Slider functionality
+    const slides = document.querySelector('.slides');
+    const totalSlides = slides.children.length;
+    let index = 0;
+    const slideWidth = 100; // percentage
+
+    function showSlide(i) {
+      // Wrap around index
+      if (i < 0) i = totalSlides - 1;
+      if (i >= totalSlides) i = 0;
+      index = i;
+      slides.style.transform = `translateX(-${index * slideWidth}%)`;
+    }
+
+    document.getElementById('prev').addEventListener('click', () => {
+      showSlide(index - 1);
+      resetAutoSlide();
+    });
+    document.getElementById('next').addEventListener('click', () => {
+      showSlide(index + 1);
+      resetAutoSlide();
+    });
+
+    // Auto slide every 4 seconds
+    let autoSlide = setInterval(() => {
+      showSlide(index + 1);
+    }, 4000);
+
+    function resetAutoSlide() {
+      clearInterval(autoSlide);
+      autoSlide = setInterval(() => {
+        showSlide(index + 1);
+      }, 4000);
+    }
+
+    showSlide(0); // initialize first slide
   </script>
+
 </body>
 </html>
