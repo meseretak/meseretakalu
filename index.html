@@ -434,6 +434,109 @@ header {
         font-size: 0.9rem;
       }
     }
+    /* Calendar and Time Counter Styles */
+.calendar-time-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.calendar-widget, .time-counter {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  flex: 1;
+  min-width: 280px;
+  animation: slideUp 0.8s ease forwards;
+}
+
+.calendar-header, .time-counter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: #3f51b5;
+  font-weight: bold;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-weight: bold;
+  color: #3f51b5;
+  font-size: 0.9rem;
+  padding: 5px;
+}
+
+.calendar-day {
+  text-align: center;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calendar-day:hover {
+  background: #e0e0ff;
+}
+
+.calendar-day.today {
+  background: #3f51b5;
+  color: white;
+  font-weight: bold;
+}
+
+.calendar-day.other-month {
+  color: #aaa;
+}
+
+.time-display {
+  font-size: 2.5rem;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  color: #3f51b5;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+
+.time-separator {
+  animation: blink 1s infinite;
+}
+
+.time-details {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.time-unit {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Animation for time change */
+@keyframes timeChange {
+  0% { transform: translateY(-5px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.time-change {
+  animation: timeChange 0.5s ease;
+}
   </style>
 </head>
 <body>
@@ -591,7 +694,55 @@ header {
           <button type="submit">Submit Comment</button>
         </form>
       </section>
-      
+      <section id="calendar-time">
+  <h2>Today</h2>
+  <div class="calendar-time-container">
+    <div class="calendar-widget">
+      <div class="calendar-header">
+        <span id="calendar-month-year">June 2024</span>
+        <div class="calendar-nav">
+          <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+          <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+      <div class="calendar-grid" id="calendar-days-header">
+        <div class="calendar-day-header">Sun</div>
+        <div class="calendar-day-header">Mon</div>
+        <div class="calendar-day-header">Tue</div>
+        <div class="calendar-day-header">Wed</div>
+        <div class="calendar-day-header">Thu</div>
+        <div class="calendar-day-header">Fri</div>
+        <div class="calendar-day-header">Sat</div>
+      </div>
+      <div class="calendar-grid" id="calendar-dates"></div>
+    </div>
+
+    <div class="time-counter">
+      <div class="time-counter-header">
+        <span>Current Time</span>
+        <i class="fas fa-clock"></i>
+      </div>
+      <div class="time-display" id="digital-clock">
+        <span class="time-hours">00</span>
+        <span class="time-separator">:</span>
+        <span class="time-minutes">00</span>
+        <span class="time-separator">:</span>
+        <span class="time-seconds">00</span>
+        <span class="time-ampm">AM</span>
+      </div>
+      <div class="time-details">
+        <div>
+          <div id="current-date">June 2, 2024</div>
+          <div class="time-unit">Date</div>
+        </div>
+        <div>
+          <div id="day-of-week">Sunday</div>
+          <div class="time-unit">Day</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
       <section id="subscribe">
         <h2>Contact Me</h2>
         <form action="https://formspree.io/f/mblyrnjk" method="POST" onsubmit="return checkMessageLength(event)">
@@ -768,6 +919,113 @@ header {
         }
       }
     });
+    // Calendar and Time Counter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Calendar functionality
+  let currentDate = new Date();
+  let currentMonth = currentDate.getMonth();
+  let currentYear = currentDate.getFullYear();
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+                     "July", "August", "September", "October", "November", "December"];
+  
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+  function renderCalendar() {
+    const firstDay = new Date(currentYear, currentMonth, 1);
+    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+    const daysInMonth = lastDay.getDate();
+    const startingDay = firstDay.getDay();
+
+    document.getElementById('calendar-month-year').textContent = 
+      `${monthNames[currentMonth]} ${currentYear}`;
+
+    let calendarHtml = '';
+    let day = 1;
+
+    // Previous month days
+    const prevMonthLastDay = new Date(currentYear, currentMonth, 0).getDate();
+    for (let i = 0; i < startingDay; i++) {
+      calendarHtml += `<div class="calendar-day other-month">${prevMonthLastDay - startingDay + i + 1}</div>`;
+    }
+
+    // Current month days
+    const today = new Date();
+    for (let i = 1; i <= daysInMonth; i++) {
+      const isToday = i === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
+      calendarHtml += `<div class="calendar-day ${isToday ? 'today' : ''}">${i}</div>`;
+      if ((i + startingDay) % 7 === 0 && i !== daysInMonth) {
+        calendarHtml += '</div><div class="calendar-grid">';
+      }
+    }
+
+    // Next month days
+    const totalCells = startingDay + daysInMonth;
+    const remainingCells = totalCells <= 35 ? 35 - totalCells : 42 - totalCells;
+    for (let i = 1; i <= remainingCells; i++) {
+      calendarHtml += `<div class="calendar-day other-month">${i}</div>`;
+    }
+
+    document.getElementById('calendar-dates').innerHTML = calendarHtml;
+  }
+
+  // Time counter functionality
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    const formattedHours = hours % 12 || 12;
+    
+    // Add animation class
+    document.querySelector('.time-hours').classList.add('time-change');
+    document.querySelector('.time-minutes').classList.add('time-change');
+    document.querySelector('.time-seconds').classList.add('time-change');
+    
+    // Update time
+    document.querySelector('.time-hours').textContent = formattedHours.toString().padStart(2, '0');
+    document.querySelector('.time-minutes').textContent = minutes.toString().padStart(2, '0');
+    document.querySelector('.time-seconds').textContent = seconds.toString().padStart(2, '0');
+    document.querySelector('.time-ampm').textContent = ampm;
+    
+    // Update date
+    document.getElementById('current-date').textContent = 
+      `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+    document.getElementById('day-of-week').textContent = dayNames[now.getDay()];
+    
+    // Remove animation class after animation completes
+    setTimeout(() => {
+      document.querySelector('.time-hours').classList.remove('time-change');
+      document.querySelector('.time-minutes').classList.remove('time-change');
+      document.querySelector('.time-seconds').classList.remove('time-change');
+    }, 500);
+  }
+
+  // Calendar navigation
+  document.getElementById('prev-month').addEventListener('click', function() {
+    currentMonth--;
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+    renderCalendar();
+  });
+
+  document.getElementById('next-month').addEventListener('click', function() {
+    currentMonth++;
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+    renderCalendar();
+  });
+
+  // Initial render
+  renderCalendar();
+  updateClock();
+  setInterval(updateClock, 1000);
+});
   </script>
 </body>
 </html>
