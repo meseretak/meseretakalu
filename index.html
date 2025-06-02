@@ -537,6 +537,43 @@ header {
 .time-change {
   animation: timeChange 0.5s ease;
 }
+
+/* Exchange Rates Table Styles */
+.exchange-rates-container {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin: 2rem auto;
+  max-width: 900px;
+  animation: slideUp 0.8s ease forwards;
+}
+
+#exchange-table {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  background: white;
+}
+
+#exchange-table th, 
+#exchange-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+#exchange-table th {
+  background: #3f51b5;
+  color: #fff;
+}
+
+#exchange-table caption {
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #3f51b5;
+}
   </style>
 </head>
 <body>
@@ -867,6 +904,24 @@ header {
     </div>
   </div>
 </section>
+
+<!-- Exchange Rates Section -->
+<section id="exchange-rates" class="exchange-rates-container">
+  <h2>Currency Exchange Rates</h2>
+  <table id="exchange-table">
+    <caption>Daily Exchange Rates (Base: USD)</caption>
+    <thead>
+      <tr>
+        <th>Currency</th>
+        <th>Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td colspan="2">Loading...</td></tr>
+    </tbody>
+  </table>
+</section>
+
   <footer>
     &copy; 2025 Meseret Akalu. All rights reserved.
   </footer>
@@ -1027,6 +1082,30 @@ document.addEventListener('DOMContentLoaded', function() {
   updateClock();
   setInterval(updateClock, 1000);
 });
+
+    // Exchange Rates API
+    document.addEventListener('DOMContentLoaded', function() {
+      const currencies = ["EUR", "GBP", "ETB", "JPY", "CNY"];
+      const apiURL = "https://v6.exchangerate-api.com/v6/84cdba964a0624e3fabcbb62/latest/USD";
+
+      fetch(apiURL)
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.querySelector("#exchange-table tbody");
+          tbody.innerHTML = ""; // clear loading
+          currencies.forEach(code => {
+            const rate = data.conversion_rates[code];
+            if (rate) {
+              const row = `<tr><td>${code}</td><td>${rate.toFixed(4)}</td></tr>`;
+              tbody.innerHTML += row;
+            }
+          });
+        })
+        .catch(() => {
+          document.querySelector("#exchange-table tbody").innerHTML =
+            "<tr><td colspan='2'>Failed to load rates</td></tr>";
+        });
+    });
   </script>
 </body>
 </html>
