@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="icon" href="favicon1.png" type="image/png" />
   <title>Meseret Akalu | QA & DevOps Portfolio</title>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-LN7QEKJW7Z"></script>
@@ -29,7 +29,7 @@
 header {
   background-color: #3f51b5;
   color: white;
-  padding: 2rem 1rem 1rem;
+  padding: 6rem 1rem 2rem;
   text-align: center;
   animation: slideUp 1s ease forwards;
   position: relative;
@@ -40,28 +40,28 @@ header {
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, -50%); /* Properly centered */
-  width: 10px; /* Small but visible size */
-  height: 20px;
-  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   background: white;
-  padding: 2px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 3px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   z-index: 10;
 }
 
 .profile-img {
-  width: 10%; /* Fill the container */
-  height: 20%; /* Proper aspect ratio */
-  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #3f51b5;
+  border: 4px solid #3f51b5;
   transition: all 0.3s ease;
 }
 
 .profile-img:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.3);
 }
     h1 {
       font-size: 2.5rem;
@@ -103,10 +103,7 @@ header {
     }
     h2:hover { color: #ff9800; }
     .bar {
-      background: 
-        
-        
-        #e0e0e0;
+      background: #e0e0e0;
       border-radius: 20px;
       overflow: hidden;
       margin-bottom: 10px;
@@ -351,6 +348,109 @@ header {
       color: #ff9800;
     }
     
+    /* Calendar and Time Counter Styles */
+    .calendar-time-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    
+    .calendar-widget, .time-counter {
+      background: white;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      flex: 1;
+      min-width: 280px;
+      animation: slideUp 0.8s ease forwards;
+    }
+    
+    .calendar-header, .time-counter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      color: #3f51b5;
+      font-weight: bold;
+    }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+    
+    .calendar-day-header {
+      text-align: center;
+      font-weight: bold;
+      color: #3f51b5;
+      font-size: 0.9rem;
+      padding: 5px;
+    }
+    
+    .calendar-day {
+      text-align: center;
+      padding: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .calendar-day:hover {
+      background: #e0e0ff;
+    }
+    
+    .calendar-day.today {
+      background: #3f51b5;
+      color: white;
+      font-weight: bold;
+    }
+    
+    .calendar-day.other-month {
+      color: #aaa;
+    }
+    
+    .time-display {
+      font-size: 2.5rem;
+      text-align: center;
+      font-family: 'Courier New', monospace;
+      color: #3f51b5;
+      margin: 1rem 0;
+      font-weight: bold;
+    }
+    
+    .time-separator {
+      animation: blink 1s infinite;
+    }
+    
+    .time-details {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    
+    .time-unit {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    @keyframes timeChange {
+      0% { transform: translateY(-5px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    
+    .time-change {
+      animation: timeChange 0.5s ease;
+    }
+    
     /* Responsive adjustments */
     @media (max-width: 1024px) {
       .content-wrapper {
@@ -375,8 +475,8 @@ header {
       }
       
       .profile-img-container {
-        width: 30px;
-        height: 30px;
+        width: 100px;
+        height: 100px;
       }
       
       h1 {
@@ -402,10 +502,13 @@ header {
         bottom: 20px;
         flex-direction: row;
         border-radius: 8px 8px 0 0;
-        transform: none;
         left: 50%;
         transform: translateX(-50%);
         width: auto;
+      }
+
+      .calendar-time-container {
+        flex-direction: column;
       }
     }
 
@@ -415,8 +518,8 @@ header {
       }
       
       .profile-img-container {
-        width: 30px;
-        height: 30px;
+        width: 80px;
+        height: 80px;
       }
       
       h1 {
@@ -433,118 +536,21 @@ header {
         margin: 0.3rem;
         font-size: 0.9rem;
       }
+
+      .time-display {
+        font-size: 2rem;
+      }
     }
-    /* Calendar and Time Counter Styles */
-.calendar-time-container {
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem 0;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.calendar-widget, .time-counter {
-  background: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  flex: 1;
-  min-width: 280px;
-  animation: slideUp 0.8s ease forwards;
-}
-
-.calendar-header, .time-counter-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  color: #3f51b5;
-  font-weight: bold;
-}
-
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-}
-
-.calendar-day-header {
-  text-align: center;
-  font-weight: bold;
-  color: #3f51b5;
-  font-size: 0.9rem;
-  padding: 5px;
-}
-
-.calendar-day {
-  text-align: center;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.calendar-day:hover {
-  background: #e0e0ff;
-}
-
-.calendar-day.today {
-  background: #3f51b5;
-  color: white;
-  font-weight: bold;
-}
-
-.calendar-day.other-month {
-  color: #aaa;
-}
-
-.time-display {
-  font-size: 2.5rem;
-  text-align: center;
-  font-family: 'Courier New', monospace;
-  color: #3f51b5;
-  margin: 1rem 0;
-  font-weight: bold;
-}
-
-.time-separator {
-  animation: blink 1s infinite;
-}
-
-.time-details {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  margin-top: 1rem;
-}
-
-.time-unit {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-/* Animation for time change */
-@keyframes timeChange {
-  0% { transform: translateY(-5px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-.time-change {
-  animation: timeChange 0.5s ease;
-}
   </style>
 </head>
 <body>
   
   <header>
-    <img src="profile.jpg" alt="Meseret Akalu" class="profile-img">
+    <div class="profile-img-container">
+      <img src="profile.jpg" alt="Meseret Akalu" class="profile-img">
+    </div>
     <h1>Meseret Akalu</h1>
-    <p>Project Quality Assurance | Project Manager  | DevOps Evangelist</p>
+    <p>Project Quality Assurance | Project Manager | DevOps Evangelist</p>
     <nav>
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -552,25 +558,76 @@ header {
       <a href="#certifications">Certifications</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
-      <a href="#subscribe">Contact</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- Social icons left side -->
+  <!-- Social Media Links -->
   <div class="social-icons" aria-label="Social Media Links">
-    <a href="https://www.linkedin.com/in/meseret-akalu-49752b116/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    <a href="https://github.com/meseretak" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://x.com/meseretak" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/meseret-akalu-49752b116/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="https://github.com/meseretak" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://x.com/meseretak" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
     <a href="mailto:meseretinsa@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    <a href="https://www.facebook.com/mesiak/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/meseretakofficilals?igsh=MTdsaXlhZXpraDg2Yg==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@coctube?si=kG5Ohyo_dL1cpRnS" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="https://t.me/meseretak" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+    <a href="https://www.facebook.com/mesiak/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/meseretakofficilals?igsh=MTdsaXlhZXpraDg2Yg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@coctube?si=kG5Ohyo_dL1cpRnS" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://t.me/meseretak" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
   </div>
   
   <div class="content-wrapper">
     <div class="main-content">
-    
+      <!-- Calendar and Time Section -->
+      <section id="calendar-time">
+        <h2>Today</h2>
+        <div class="calendar-time-container">
+          <div class="calendar-widget">
+            <div class="calendar-header">
+              <span id="calendar-month-year">June 2024</span>
+              <div class="calendar-nav">
+                <button id="prev-month" aria-label="Previous month"><i class="fas fa-chevron-left"></i></button>
+                <button id="next-month" aria-label="Next month"><i class="fas fa-chevron-right"></i></button>
+              </div>
+            </div>
+            <div class="calendar-grid" id="calendar-days-header">
+              <div class="calendar-day-header">Sun</div>
+              <div class="calendar-day-header">Mon</div>
+              <div class="calendar-day-header">Tue</div>
+              <div class="calendar-day-header">Wed</div>
+              <div class="calendar-day-header">Thu</div>
+              <div class="calendar-day-header">Fri</div>
+              <div class="calendar-day-header">Sat</div>
+            </div>
+            <div class="calendar-grid" id="calendar-dates"></div>
+          </div>
+
+          <div class="time-counter">
+            <div class="time-counter-header">
+              <span>Current Time</span>
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="time-display" id="digital-clock">
+              <span class="time-hours">00</span>
+              <span class="time-separator">:</span>
+              <span class="time-minutes">00</span>
+              <span class="time-separator">:</span>
+              <span class="time-seconds">00</span>
+              <span class="time-ampm">AM</span>
+            </div>
+            <div class="time-details">
+              <div>
+                <div id="current-date">June 2, 2024</div>
+                <div class="time-unit">Date</div>
+              </div>
+              <div>
+                <div id="day-of-week">Sunday</div>
+                <div class="time-unit">Day</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
       <section id="about">
         <h2>About Me</h2>
         <p>As a Principal IT Project Quality Assurance at Awash Bank, I leverage my extensive experience in software quality assurance and DevOps to ensure the highest standards of quality and reliability in IT projects. With over 10 years of experience in the field, I have developed a strong proficiency in various tools and technologies, including Git, GitHub, Jenkins, Selenium, JMeter, Docker, Kubernetes, Puppet, Chef, Ansible, and Nagios.</p>
@@ -589,8 +646,9 @@ header {
         </ul>
       </section>
 
+      <!-- Experience Section -->
       <section id="experience">
-        <h2>Experience</h2>
+        <h2>Professional Experience</h2>
         <ul>
           <li><strong>Principal QA, Awash Bank</strong> – Apr 2024–Present</li>
           <li><strong>Senior QA, Awash Bank</strong> – Jan 2022–Apr 2024</li>
@@ -602,6 +660,7 @@ header {
         </ul>
       </section>
 
+      <!-- Skills Section -->
       <section id="skills">
         <h2>Tools Proficiency</h2>
         <div class="bar"><div class="bar-fill" style="width:100%">TestLink - 100%</div></div>
@@ -613,6 +672,7 @@ header {
         <div class="bar"><div class="bar-fill" style="width:100%">JMeter - 100%</div></div>
       </section>
 
+      <!-- Certifications Section -->
       <section id="certifications">
         <h2>Certifications</h2>
         <div class="certs">
@@ -623,6 +683,7 @@ header {
         </div>
       </section>
 
+      <!-- Projects Section -->
       <section id="projects">
         <h2>Major Projects</h2>
         <h3>🛠 INSA ERP Projects (12+)</h3>
@@ -660,29 +721,33 @@ header {
         </ul>
       </section>
 
+      <!-- Education Section -->
       <section id="education">
         <h2>Education</h2>
         <p>BSc in Computer Science, Addis Ababa University (2003–2006)</p>
       </section>
 
+      <!-- Contact Section -->
       <section id="contact">
-        <h2>Contact</h2>
+        <h2>Contact Information</h2>
         <div class="contact">
           <div><i class="fas fa-envelope"></i> meseretak@awashbank.com</div>
           <div><i class="fas fa-phone"></i> 0912465247</div>
-          <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/meseret-akalu-49752b116">LinkedIn</a></div>
-          <div><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/meseretak/">Facebook</a></div>
+          <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/meseret-akalu-49752b116" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+          <div><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/meseretak/" target="_blank" rel="noopener noreferrer">Facebook</a></div>
         </div>
       </section>
       
+      <!-- CV Section -->
       <section id="cv" class="fade-in">
         <h2>My CV</h2>
         <p>You can view or download my full CV below:</p>
-        <embed src="Meseret_Akalu_CV.pdf" type="application/pdf" width="100%" height="600px" style="border:1px solid #ccc; border-radius:8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);"></embed>
+        <embed src="Meseret_Akalu_CV.pdf" type="application/pdf" width="100%" height="600px" style="border:1px solid #ccc; border-radius:8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
         <br>
-        <a href="Meseret_Akalu_CV.pdf" download style="display:inline-block;margin-top:1rem;padding:0.75rem 1.5rem;background:#3f51b5;color:#fff;text-decoration:none;border-radius:5px;">📄 Download CV</a>
+        <a href="Meseret_Akalu_CV.pdf" download class="download-btn">📄 Download CV</a>
       </section>
 
+      <!-- Comments Section -->
       <section id="comments" class="fade-in">
         <h2>Leave a Comment About This Website</h2>
         <form action="https://formspree.io/f/mblyrnjk" method="POST">
@@ -696,6 +761,7 @@ header {
         </form>
       </section>
       
+      <!-- Contact Form Section -->
       <section id="subscribe">
         <h2>Contact Me</h2>
         <form action="https://formspree.io/f/mblyrnjk" method="POST" onsubmit="return checkMessageLength(event)">
@@ -721,6 +787,7 @@ header {
       </section>
     </div>
     
+    <!-- Blog Sidebar -->
     <div class="posts-sidebar">
       <h2>Latest Posts & Articles</h2>
       
@@ -818,93 +885,40 @@ header {
       <button id="loadMore" class="load-more-btn">Load More Articles</button>
     </div>
   </div>
-    <section id="calendar-time">
-  <h2>Today</h2>
-  <div class="calendar-time-container">
-    <div class="calendar-widget">
-      <div class="calendar-header">
-        <span id="calendar-month-year">June 2024</span>
-        <div class="calendar-nav">
-          <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
-          <button id="next-month"><i class="fas fa-chevron-right"></i></button>
-        </div>
-      </div>
-      <div class="calendar-grid" id="calendar-days-header">
-        <div class="calendar-day-header">Sun</div>
-        <div class="calendar-day-header">Mon</div>
-        <div class="calendar-day-header">Tue</div>
-        <div class="calendar-day-header">Wed</div>
-        <div class="calendar-day-header">Thu</div>
-        <div class="calendar-day-header">Fri</div>
-        <div class="calendar-day-header">Sat</div>
-      </div>
-      <div class="calendar-grid" id="calendar-dates"></div>
-    </div>
-
-    <div class="time-counter">
-      <div class="time-counter-header">
-        <span>Current Time</span>
-        <i class="fas fa-clock"></i>
-      </div>
-      <div class="time-display" id="digital-clock">
-        <span class="time-hours">00</span>
-        <span class="time-separator">:</span>
-        <span class="time-minutes">00</span>
-        <span class="time-separator">:</span>
-        <span class="time-seconds">00</span>
-        <span class="time-ampm">AM</span>
-      </div>
-      <div class="time-details">
-        <div>
-          <div id="current-date">June 2, 2024</div>
-          <div class="time-unit">Date</div>
-        </div>
-        <div>
-          <div id="day-of-week">Sunday</div>
-          <div class="time-unit">Day</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  
   <footer>
     &copy; 2025 Meseret Akalu. All rights reserved.
   </footer>
 
   <script>
     // Contact form character counter
-    const message = document.getElementById('message');
-    const charCount = document.getElementById('charCount');
-    const submitBtn = document.getElementById('submitBtn');
-
-    message.addEventListener('input', () => {
-      const length = message.value.length;
-      charCount.textContent = `${length}/750`;
-      submitBtn.disabled = length < 25;
-    });
-
-    function checkMessageLength(event) {
-      if (message.value.length < 25) {
-        alert("Message must be at least 25 characters.");
-        event.preventDefault();
-        return false;
-      }
-      return true;
-    }
-
-    // Load More functionality for posts
     document.addEventListener('DOMContentLoaded', function() {
+      const message = document.getElementById('message');
+      const charCount = document.getElementById('charCount');
+      const submitBtn = document.getElementById('submitBtn');
+
+      if (message && charCount && submitBtn) {
+        message.addEventListener('input', () => {
+          const length = message.value.length;
+          charCount.textContent = `${length}/750`;
+          submitBtn.disabled = length < 25;
+        });
+      }
+
+      function checkMessageLength(event) {
+        if (message.value.length < 25) {
+          alert("Message must be at least 25 characters.");
+          event.preventDefault();
+          return false;
+        }
+        return true;
+      }
+
+      // Load More functionality for posts
       const loadMoreBtn = document.getElementById('loadMore');
       const hiddenPosts = document.querySelectorAll('.post-card.hidden');
       let postsToShow = 2;
       let currentVisible = 0;
-      
-      // Show initial posts
-      showPosts();
-      
-      loadMoreBtn.addEventListener('click', function() {
-        showPosts();
-      });
       
       function showPosts() {
         let shown = 0;
@@ -914,119 +928,121 @@ header {
           currentVisible++;
         }
         
-        // Hide button if no more posts
         if (currentVisible >= hiddenPosts.length) {
           loadMoreBtn.style.display = 'none';
         }
       }
-    });
-    // Calendar and Time Counter Functionality
-document.addEventListener('DOMContentLoaded', function() {
-  // Calendar functionality
-  let currentDate = new Date();
-  let currentMonth = currentDate.getMonth();
-  let currentYear = currentDate.getFullYear();
-
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-                     "July", "August", "September", "October", "November", "December"];
-  
-  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-  function renderCalendar() {
-    const firstDay = new Date(currentYear, currentMonth, 1);
-    const lastDay = new Date(currentYear, currentMonth + 1, 0);
-    const daysInMonth = lastDay.getDate();
-    const startingDay = firstDay.getDay();
-
-    document.getElementById('calendar-month-year').textContent = 
-      `${monthNames[currentMonth]} ${currentYear}`;
-
-    let calendarHtml = '';
-    let day = 1;
-
-    // Previous month days
-    const prevMonthLastDay = new Date(currentYear, currentMonth, 0).getDate();
-    for (let i = 0; i < startingDay; i++) {
-      calendarHtml += `<div class="calendar-day other-month">${prevMonthLastDay - startingDay + i + 1}</div>`;
-    }
-
-    // Current month days
-    const today = new Date();
-    for (let i = 1; i <= daysInMonth; i++) {
-      const isToday = i === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
-      calendarHtml += `<div class="calendar-day ${isToday ? 'today' : ''}">${i}</div>`;
-      if ((i + startingDay) % 7 === 0 && i !== daysInMonth) {
-        calendarHtml += '</div><div class="calendar-grid">';
+      
+      if (loadMoreBtn && hiddenPosts.length > 0) {
+        showPosts();
+        loadMoreBtn.addEventListener('click', showPosts);
       }
-    }
 
-    // Next month days
-    const totalCells = startingDay + daysInMonth;
-    const remainingCells = totalCells <= 35 ? 35 - totalCells : 42 - totalCells;
-    for (let i = 1; i <= remainingCells; i++) {
-      calendarHtml += `<div class="calendar-day other-month">${i}</div>`;
-    }
+      // Calendar and Time Counter Functionality
+      let currentDate = new Date();
+      let currentMonth = currentDate.getMonth();
+      let currentYear = currentDate.getFullYear();
 
-    document.getElementById('calendar-dates').innerHTML = calendarHtml;
-  }
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+                         "July", "August", "September", "October", "November", "December"];
+      
+      const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-  // Time counter functionality
-  function updateClock() {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const seconds = now.getSeconds();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const formattedHours = hours % 12 || 12;
-    
-    // Add animation class
-    document.querySelector('.time-hours').classList.add('time-change');
-    document.querySelector('.time-minutes').classList.add('time-change');
-    document.querySelector('.time-seconds').classList.add('time-change');
-    
-    // Update time
-    document.querySelector('.time-hours').textContent = formattedHours.toString().padStart(2, '0');
-    document.querySelector('.time-minutes').textContent = minutes.toString().padStart(2, '0');
-    document.querySelector('.time-seconds').textContent = seconds.toString().padStart(2, '0');
-    document.querySelector('.time-ampm').textContent = ampm;
-    
-    // Update date
-    document.getElementById('current-date').textContent = 
-      `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
-    document.getElementById('day-of-week').textContent = dayNames[now.getDay()];
-    
-    // Remove animation class after animation completes
-    setTimeout(() => {
-      document.querySelector('.time-hours').classList.remove('time-change');
-      document.querySelector('.time-minutes').classList.remove('time-change');
-      document.querySelector('.time-seconds').classList.remove('time-change');
-    }, 500);
-  }
+      function renderCalendar() {
+        const firstDay = new Date(currentYear, currentMonth, 1);
+        const lastDay = new Date(currentYear, currentMonth + 1, 0);
+        const daysInMonth = lastDay.getDate();
+        const startingDay = firstDay.getDay();
 
-  // Calendar navigation
-  document.getElementById('prev-month').addEventListener('click', function() {
-    currentMonth--;
-    if (currentMonth < 0) {
-      currentMonth = 11;
-      currentYear--;
-    }
-    renderCalendar();
-  });
+        document.getElementById('calendar-month-year').textContent = 
+          `${monthNames[currentMonth]} ${currentYear}`;
 
-  document.getElementById('next-month').addEventListener('click', function() {
-    currentMonth++;
-    if (currentMonth > 11) {
-      currentMonth = 0;
-      currentYear++;
-    }
-    renderCalendar();
-  });
+        let calendarHtml = '';
+        let day = 1;
 
-  // Initial render
-  renderCalendar();
-  updateClock();
-  setInterval(updateClock, 1000);
-});
+        // Previous month days
+        const prevMonthLastDay = new Date(currentYear, currentMonth, 0).getDate();
+        for (let i = 0; i < startingDay; i++) {
+          calendarHtml += `<div class="calendar-day other-month">${prevMonthLastDay - startingDay + i + 1}</div>`;
+        }
+
+        // Current month days
+        const today = new Date();
+        for (let i = 1; i <= daysInMonth; i++) {
+          const isToday = i === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear();
+          calendarHtml += `<div class="calendar-day ${isToday ? 'today' : ''}">${i}</div>`;
+          if ((i + startingDay) % 7 === 0 && i !== daysInMonth) {
+            calendarHtml += '</div><div class="calendar-grid">';
+          }
+        }
+
+        // Next month days
+        const totalCells = startingDay + daysInMonth;
+        const remainingCells = totalCells <= 35 ? 35 - totalCells : 42 - totalCells;
+        for (let i = 1; i <= remainingCells; i++) {
+          calendarHtml += `<div class="calendar-day other-month">${i}</div>`;
+        }
+
+        document.getElementById('calendar-dates').innerHTML = calendarHtml;
+      }
+
+      // Time counter functionality
+      function updateClock() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const formattedHours = hours % 12 || 12;
+        
+        // Add animation class
+        document.querySelector('.time-hours').classList.add('time-change');
+        document.querySelector('.time-minutes').classList.add('time-change');
+        document.querySelector('.time-seconds').classList.add('time-change');
+        
+        // Update time
+        document.querySelector('.time-hours').textContent = formattedHours.toString().padStart(2, '0');
+        document.querySelector('.time-minutes').textContent = minutes.toString().padStart(2, '0');
+        document.querySelector('.time-seconds').textContent = seconds.toString().padStart(2, '0');
+        document.querySelector('.time-ampm').textContent = ampm;
+        
+        // Update date
+        document.getElementById('current-date').textContent = 
+          `${monthNames[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}`;
+        document.getElementById('day-of-week').textContent = dayNames[now.getDay()];
+        
+        // Remove animation class after animation completes
+        setTimeout(() => {
+          document.querySelector('.time-hours').classList.remove('time-change');
+          document.querySelector('.time-minutes').classList.remove('time-change');
+          document.querySelector('.time-seconds').classList.remove('time-change');
+        }, 500);
+      }
+
+      // Calendar navigation
+      document.getElementById('prev-month').addEventListener('click', function() {
+        currentMonth--;
+        if (currentMonth < 0) {
+          currentMonth = 11;
+          currentYear--;
+        }
+        renderCalendar();
+      });
+
+      document.getElementById('next-month').addEventListener('click', function() {
+        currentMonth++;
+        if (currentMonth > 11) {
+          currentMonth = 0;
+          currentYear++;
+        }
+        renderCalendar();
+      });
+
+      // Initial render
+      renderCalendar();
+      updateClock();
+      setInterval(updateClock, 1000);
+    });
   </script>
 </body>
 </html>
