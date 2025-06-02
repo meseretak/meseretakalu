@@ -537,6 +537,88 @@ header {
 .time-change {
   animation: timeChange 0.5s ease;
 }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #8e9eab);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    margin-top: 20px;
+  }
+
+  caption {
+    caption-side: top;
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #333;
+    padding: 15px 0;
+  }
+
+  th, td {
+    padding: 14px 18px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #3f51b5;
+    color: #ffffff;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  @media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+      display: block;
+    }
+
+    tr {
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    td, th {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+
+    td::before, th::before {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    td:nth-child(1)::before { content: "Currency"; }
+    td:nth-child(2)::before { content: "Buying"; }
+    td:nth-child(3)::before { content: "Selling"; }
+  }
+
   </style>
 </head>
 <body>
@@ -695,7 +777,10 @@ header {
           <button type="submit">Submit Comment</button>
         </form>
       </section>
-      
+      <div id="loading" style="text-align:center; font-size: 1.2em; color:#3f51b5;">
+  🔄 Loading exchange rates...
+</div>
+
       <section id="subscribe">
         <h2>Contact Me</h2>
         <form action="https://formspree.io/f/mblyrnjk" method="POST" onsubmit="return checkMessageLength(event)">
@@ -867,6 +952,7 @@ header {
     </div>
   </div>
 </section>
+  
   <footer>
     &copy; 2025 Meseret Akalu. All rights reserved.
   </footer>
@@ -1027,6 +1113,40 @@ document.addEventListener('DOMContentLoaded', function() {
   updateClock();
   setInterval(updateClock, 1000);
 });
+    <script>
+  const currencies = ["USD", "EUR", "GBP", "AED", "ZAR", "SAR", "JPY", "CHF", "AUD", "CNY", "ETB"];
+  const apiURL = "https://v6.exchangerate-api.com/v6/84cdba964a0624e3fabcbb62/latest/USD";
+
+  fetch(apiURL)
+    .then(res => res.json())
+    .then(data => {
+      const tbody = document.querySelector("#exchange-table tbody");
+      const rates = data.conversion_rates;
+
+      currencies.forEach(code => {
+        const buy = (rates[code] * 0.98).toFixed(4); // simulate buying rate
+        const sell = (rates[code] * 1.02).toFixed(4); // simulate selling rate
+
+        const row = `
+          <tr>
+            <td>${code}</td>
+            <td>${buy}</td>
+            <td>${sell}</td>
+          </tr>
+        `;
+        tbody.innerHTML += row;
+      });
+  setInterval(() => location.reload(), 10 * 60 * 1000); // 10 minutes
+
+      document.getElementById("loading").style.display = "none";
+    })
+    .catch(error => {
+      console.error("API fetch error:", error);
+      document.querySelector("#exchange-table tbody").innerHTML =
+        `<tr><td colspan="3">Failed to load data 😢</td></tr>`;
+      document.getElementById("loading").textContent = "❌ Failed to fetch rates. Try again later.";
+    });
+
   </script>
 </body>
 </html>
